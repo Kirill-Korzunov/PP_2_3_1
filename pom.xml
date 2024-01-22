@@ -10,6 +10,10 @@
 
   <properties>
     <spring.version>5.3.14</spring.version>
+    <hibernate.version>5.6.3.Final</hibernate.version>
+    <mysql-connector.version>8.0.25</mysql-connector.version>
+    <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+    <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
   </properties>
 
   <dependencies>
@@ -27,9 +31,27 @@
     </dependency>
 
     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql-connector.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version>
+      <version>${javax.servlet-api.version}</version>
       <scope>provided</scope>
     </dependency>
 
@@ -37,7 +59,7 @@
     <dependency>
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-spring5</artifactId>
-      <version>3.1.2.RELEASE</version>
+      <version>${thymeleaf.version}</version>
     </dependency>
 
   </dependencies>
