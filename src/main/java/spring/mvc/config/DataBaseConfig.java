@@ -22,9 +22,9 @@ import java.util.Properties;
 @ComponentScan("spring.mvc")
 public class DataBaseConfig {
 
-    @Autowired
     private Environment env;
 
+    @Autowired
     public DataBaseConfig(Environment env) {
         this.env = env;
     }
@@ -54,7 +54,6 @@ public class DataBaseConfig {
         em.setJpaProperties(props);
         return em;
     }
-
 
     @Bean
     public PlatformTransactionManager platformTransactionManager() {
