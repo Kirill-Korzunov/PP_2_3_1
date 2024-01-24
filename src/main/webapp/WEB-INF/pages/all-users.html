@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+</head>
+<body>
+    <h2>Все пользователи</h2>
+
+    <table>
+        <tr>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Возраст</td>
+            <td>Город</td>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surName}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.city}"></td>
+        </tr>
+    </table>
+    <br><br>
+
+    <input type="submit" value="Добавить пользователя" onclick="window.location.href='addNewUser'">
+</body>
+</html>
