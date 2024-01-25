@@ -1,6 +1,9 @@
 package spring.mvc.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 
 @Entity
@@ -12,15 +15,20 @@ public class User {
     private Long id;
 
     @Column(name = "name")
+    @NotBlank(message = "Поле должно быть заполнено")
     private String name;
 
     @Column(name = "surname")
+    @NotBlank(message = "Поле должно быть заполнено")
     private String surName;
 
     @Column(name = "age")
+    @Min(value = 0, message = "Введите свой возраст")
+    @Max(value = 100, message = "Введите свой возраст")
     private Integer age;
 
     @Column(name = "city")
+    @NotBlank(message = "Поле должно быть заполнено")
     private String city;
 
     public User() {

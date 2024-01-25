@@ -3,12 +3,15 @@ package spring.mvc.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import spring.mvc.model.User;
 import spring.mvc.service.UserService;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -30,9 +33,13 @@ public class UserController {
     }
 
     @PostMapping(value = "/addNewUserPost")
-    public String addNewUser(@ModelAttribute("user") User user) {
-        userService.add(user);
-        return "redirect:/";
+    public String addNewUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "user-info";
+        } else {
+            userService.add(user);
+            return "redirect:/";
+        }
     }
 
     @GetMapping(value = "/updateUser")
@@ -42,9 +49,13 @@ public class UserController {
     }
 
     @PostMapping(value = "/updateUserPost")
-    public String updateUser(@ModelAttribute("user") User user) {
-        userService.update(user);
-        return "redirect:/";
+    public String updateUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "user-info-edit";
+        } else {
+            userService.update(user);
+            return "redirect:/";
+        }
     }
 
     @GetMapping(value = "/deleteUser")

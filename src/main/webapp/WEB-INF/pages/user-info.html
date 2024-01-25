@@ -7,12 +7,16 @@
 </head>
 <body>
     <form th:method="POST" th:action="@{/addNewUserPost}" th:object="${user}">
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Generic Error</p>
         Имя <input type="text" th:field="*{name}"/>
         <br><br>
+        <p th:if="${#fields.hasErrors('surName')}" th:errors="*{surName}">Generic Error</p>
         Фамилия <input type="text" th:field="*{surName}"/>
         <br><br>
+        <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Generic Error</p>
         Возраст <input type="text" th:field="*{age}"/>
         <br><br>
+        <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}">Generic Error</p>
         Город <input type="text" th:field="*{city}"/>
         <br><br>
         <input type="submit" value="Добавить">
