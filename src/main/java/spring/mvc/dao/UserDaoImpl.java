@@ -22,4 +22,21 @@ public class UserDaoImpl implements UserDao{
     public void add(User user) {
         em.persist(user);
     }
+
+    @Override
+    public User getUser(Long id) {
+        return em.find(User.class, id);
+    }
+
+    @Override
+    public void update(User user) {
+        em.merge(user);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        em.remove(getUser(id));
+    }
+
+
 }

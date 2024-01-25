@@ -14,16 +14,29 @@
             <td>Фамилия</td>
             <td>Возраст</td>
             <td>Город</td>
+            <div th:unless="${users.isEmpty()}">
+                <td>Действия</td>
+            </div>
         </tr>
         <tr th:each="user : ${users}">
             <td th:text="${user.name}"></td>
             <td th:text="${user.surName}"></td>
             <td th:text="${user.age}"></td>
             <td th:text="${user.city}"></td>
+            <td>
+                <form th:action="@{/updateUser}">
+                    <button type="submit" th:name="id" th:value="${user.id}">Изменить</button>
+                </form>
+                <form th:action="@{/deleteUser}">
+                    <button type="submit" th:name="id" th:value="${user.id}">Удалить</button>
+                </form>
+            </td>
+
         </tr>
     </table>
     <br><br>
-
-    <input type="submit" value="Добавить пользователя" onclick="window.location.href='addNewUser'">
+    <form th:action="@{/addNewUser}">
+        <button type="submit">Добавить пользователя</button>
+    </form>
 </body>
 </html>
